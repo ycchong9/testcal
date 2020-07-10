@@ -40,7 +40,7 @@ func SetupNumber(number int) error {
 
 //AddSum func
 func AddSum(nextNumber int) (int, error) {
-	if *usrNumber == 0 {
+	if usrNumber == nil {
 		return 0, &CusError{
 			Msg: "please setup number",
 		}
