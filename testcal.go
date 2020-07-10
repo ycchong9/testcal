@@ -24,3 +24,29 @@ type CusError struct {
 func (m *CusError) Error() string {
 	return m.Msg
 }
+
+var usrNumber *int
+
+//SetupNumber func
+func SetupNumber(number int) error {
+	if number < 0 {
+		return &CusError{
+			Msg: "number cannot be negative",
+		}
+	}
+	usrNumber = &number
+	return nil
+}
+
+//AddSum func
+func AddSum(nextNumber int) (int, error) {
+	if *usrNumber == 0 {
+		return 0, &CusError{
+			Msg: "please setup number",
+		}
+	}
+
+	totalSum := *usrNumber + nextNumber
+
+	return totalSum, nil
+}
